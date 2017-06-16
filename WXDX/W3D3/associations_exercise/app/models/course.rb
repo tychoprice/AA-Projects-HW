@@ -20,13 +20,17 @@ class Course < ActiveRecord::Base
   through: :enrollments,
   source: :users
 
+  has_many :instructors,
+  primary_key: :instructor_id,
+  foreign_key: :id,
+  class_name: 'User'
+
   has_many :prerequisites,
   primary_key: :prereq_id,
   foreign_key: :id,
   class_name: 'Course'
 
-  has_many :instructors,
-  primary_key: :instructor_id,
-  foreign_key: :id,
-  class_name: 'User'
+  # has_many and belongs_to can be interchanged
+  # if primary and foreign keys are swapped
+
 end
