@@ -1,6 +1,7 @@
 <h1> u be creatin dis new cat </h1>
 
-<form action="<%= cats_url %>" method="post">
+<%= render 'form', action: :new, cat: @cat %>
+<!-- <form action="<%= cats_url %>" method="post">
   <label for="name">Name</label>
   <input id="name" type="text" name="cat[name]">
 
@@ -35,4 +36,4 @@
   <textarea name="cat[description]"></textarea>
   <input type="submit" value="Add cat">
 
-</form>
+</form> -->

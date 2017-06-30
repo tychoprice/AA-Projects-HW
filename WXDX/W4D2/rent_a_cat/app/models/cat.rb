@@ -1,4 +1,9 @@
 class Cat < ActiveRecord::Base
+  has_many(
+    :cat_rental_requests,
+    class_name: "CatRentalRequest",
+    dependent: :destroy
+    )
 
   validates(
     :name,
