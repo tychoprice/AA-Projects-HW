@@ -14,7 +14,11 @@ Student.prototype.enroll = function(course) {
 };
 
 Student.prototype.courseLoad = function() {
-  // departments + credits
+  const courseLoad = {};
+  this.courses.forEach(function(course) {
+    courseLoad[course.department] = course.numCredits;
+  });
+  return courseLoad;
 };
 
 function Course(name, department, numCredits) {
@@ -25,5 +29,5 @@ function Course(name, department, numCredits) {
 }
 
 Course.prototype.addStudent = function(student) {
-
+  this.students.push(student);
 };
