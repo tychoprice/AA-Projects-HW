@@ -36,12 +36,19 @@ NUMS.myEach(function(num) {
 //myMap
 Array.prototype.myMap = function(callback) {
   const mapped = [];
-  for (let i = 0; i < this.length; i++) {
-    mapped.push(callback(this[i]));
-  }
+  this.myEach(el => mapped.push(callback(el)));
   return mapped;
 };
+NUMS.myMap(num => num * num * num); //ES6
+NUMS.myMap(function cubed(num) { return num * num * num; });
 
-NUMS.myMap(function cubed(num) {
-  return num * num * num;
-});
+//myReduce
+
+Array.prototype.myReduce = function(callback, initialValue = this[0]) {
+  let arr = this;
+  let result = initialValue;
+  arr.myEach(el => result = callback(result, el));
+  return result;
+};
+
+NUMS.myReduce();
